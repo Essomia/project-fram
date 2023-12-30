@@ -1,0 +1,24 @@
+{
+  "name": "project-fram",
+  "version": "1.0.0",
+  "description": "Boilerplate to start a new repository.",
+  "homepage": "https://github.com/essomia/project-fram#readme",
+  "author": "Melissa Boutry <essomia@users.noreply.github.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/essomia/project-fram.git"
+  },
+  "bugs": {
+    "url": "https://github.com/essomia/project-fram/issues"
+  },
+  "scripts": {
+    "build": "echo \"Error: no build specified\" && exit 1",
+    "dev": "echo \"Error: no dev specified\" && exit 1",
+    "serve": "echo \"Error: no serve specified\" && exit 1",
+    "help": "echo \"Error: no help specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {}
+}
