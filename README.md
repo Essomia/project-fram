@@ -22,12 +22,14 @@ A flexible JavaScript boilerplate for modern Node.js and React projects.
 ### Installation
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/essomia/project-fram.git your-project-name
 cd your-project-name
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 # or
@@ -35,6 +37,7 @@ yarn install
 ```
 
 3. Start development
+
 ```bash
 npm run dev
 # or

@@ -1,5 +1,7 @@
 // Load environment variables from .env file
-require('dotenv').config();
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 /**
  * Main application entry point.
@@ -7,7 +9,6 @@ require('dotenv').config();
  */
 function main() {
   console.log('Project is running!');
-
   // Your application code starts here
 }
 
