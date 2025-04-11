@@ -1,0 +1,74 @@
+# Node.js CI/CD Pipeline
+# Simple workflow for linting and building the application
+
+name: Node.js CI/CD Pipeline
+
+on:
+  # Run when PRs are created or updated targeting main branch
+  pull_request:
+    branches: [main]
+  # Run when code is pushed directly to main branch
+  push:
+    branches: [main]
+  # Allow manual triggering of the workflow from GitHub UI
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    # Using Ubuntu for its performance and compatibility
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          # Using Node.js 18 for stability and LTS support
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+          # Speeds up workflow by caching npm dependencies
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linting
+        run: npm run lint
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    # Only proceed to build if linting passed successfully
+    needs: lint
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          # Using Node.js 18 for stability and LTS support
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+          # Speeds up workflow by caching npm dependencies
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build

@@ -1,0 +1,44 @@
+# Security Updates Auto-Approval Workflow
+# Handles patch updates to automatically approves and merges security-related pull requests from Dependabot
+
+name: Security Updates Auto-Approval
+
+on:
+  # Triggers only on pull requests targeting the main branch
+  pull_request:
+    branches: [main]
+
+permissions:
+  # Required permissions for approving and merging PRs
+  pull-requests: write # Allows approving pull requests
+  contents: write # Allows merging changes into the repository
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    # Only run this job when the PR is created by Dependabot
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+        # Retrieves metadata about the dependency being updated
+
+      - name: Auto-merge Dependabot PRs for critical vulnerabilities
+        # Only auto-merge when one of these conditions is met:
+        # 1. It's a patch version update (low risk)
+        # 2. It's a direct production dependency
+        # 3. It addresses an open critical security vulnerability
+        if: ${{ steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+          steps.metadata.outputs.dependency-type == 'direct:production' ||
+          steps.metadata.outputs.alert-state == 'open' &&
+          contains(steps.metadata.outputs.alert-severity, 'critical') }}
+        # Approves and merges the PR using GitHub CLI
+        run: |
+          gh pr review --approve "$PR_URL"
+          gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
