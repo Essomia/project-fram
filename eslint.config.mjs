@@ -1,4 +1,4 @@
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import jest from 'eslint-plugin-jest';
 import prettier from 'eslint-plugin-prettier';
@@ -18,6 +18,23 @@ const compat = new FlatCompat({
 });
 
 export default defineConfig([
+  globalIgnores([
+    '**/.git/**',
+    '**/node_modules/**',
+    '**/dist/**',
+    '**/build/**',
+    '**/coverage/**',
+  ]),
+  {
+    files: ['*.js', '*.ts', '*.jsx', '*.tsx'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+        ...globals.jest,
+      },
+    },
+  },
   {
     extends: compat.extends(
       'eslint:recommended',
