@@ -1,24 +1,46 @@
 {
   "name": "project-fram",
-  "version": "1.0.0",
-  "description": "Boilerplate to start a new repository.",
-  "homepage": "https://github.com/essomia/project-fram#readme",
-  "author": "Melissa Boutry <essomia@users.noreply.github.com>",
+  "version": "0.1.0",
+  "description": "A modern JavaScript boilerplate for Node.js and React projects",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "build": "echo \"Build script would go here\" && exit 0",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": ["boilerplate", "javascript", "node", "react", "typescript"],
+  "author": "essomia",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/essomia/project-fram.git"
+    "url": "git+https://github.com/essomia/project-fram.git"
   },
   "bugs": {
     "url": "https://github.com/essomia/project-fram/issues"
   },
-  "scripts": {
-    "build": "echo \"Error: no build specified\" && exit 1",
-    "dev": "echo \"Error: no dev specified\" && exit 1",
-    "serve": "echo \"Error: no serve specified\" && exit 1",
-    "help": "echo \"Error: no help specified\" && exit 1"
+  "homepage": "https://github.com/essomia/project-fram#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1"
   },
-  "dependencies": {},
-  "devDependencies": {},
-  "peerDependencies": {}
+  "devDependencies": {
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.6.3",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jest": "^27.4.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.2.2"
+  }
 }
