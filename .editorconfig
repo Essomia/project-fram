@@ -8,8 +8,10 @@ indent_style = space             # To define tab (hard tabs) or space (soft tabs
 insert_final_newline = true      # To add a newline when saving.
 trim_trailing_whitespace = true  # To remove any whitespace characters preceding newline characters.
 
-[{*.yaml, .prettierrc, package.json}]
-indent_size = 2
-
-[{.editorconfig, *.md}]
+[*.md]
 indent_size = false
+trim_trailing_whitespace = false
+
+[*.{json,yml,yaml}]
+indent_size = 2
+indent_style = space
