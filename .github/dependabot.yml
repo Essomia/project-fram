@@ -8,8 +8,8 @@ updates:
     labels:
       - "dependencies"
     commit-message:
-      # Prefix all commit messages with "npm: "
-      prefix: "npm"
+      # Prefix all commit messages with "ci: "
+      prefix: "ci"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -18,5 +18,5 @@ updates:
     labels:
       - "dependencies"
     commit-message:
-      # Prefix all commit messages with "[gh-actions] "
-      prefix: "[gh-actions]"
+      # Prefix all commit messages with "ci: "
+      prefix: "ci"
