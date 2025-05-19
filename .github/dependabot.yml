@@ -19,7 +19,3 @@ updates:
     vulnerability-alerts: true
     # Automatically merge security updates when possible to reduce manual intervention
     auto-merge: true
-    commit-message:
-      prefix: "fix"
-    target-branch: "main"
-    versioning-strategy: "increase"
