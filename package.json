@@ -2,8 +2,10 @@
   "name": "project-fram",
   "version": "0.1.0",
   "description": "A modern JavaScript boilerplate for Node.js and React projects",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "type": "module",
+  "author": "essomia",
+  "license": "MIT",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/index.js",
@@ -17,15 +19,6 @@
     "prepare": "husky install",
     "postinstall": "chmod +x .husky/pre-commit"
   },
-  "keywords": [
-    "boilerplate",
-    "javascript",
-    "node",
-    "react",
-    "typescript"
-  ],
-  "author": "essomia",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/essomia/project-fram.git"
@@ -54,6 +47,9 @@
     "prettier": "^3.0.3",
     "ts-jest": "^29.3.2",
     "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
