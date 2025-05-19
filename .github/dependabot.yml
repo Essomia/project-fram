@@ -1,21 +1,22 @@
 version: 2
-
 updates:
   - package-ecosystem: "npm"
     directory: "/"
-    # Check for updates daily to ensure quick response to security issues
     schedule:
       interval: "daily"
-    # Limit the number of concurrent PRs to avoid overwhelming the repository
-    open-pull-requests-limit: 2
-    # Apply these labels to all PRs for easier filtering and automation
+    open-pull-requests-limit: 1
     labels:
       - "dependencies"
-    # Only create PRs for security-related updates to minimize noise
-    allow:
-      - dependency-type: "all"
-        update-type: "security"
-    # Enable scanning and alerts for security vulnerabilities
-    vulnerability-alerts: true
-    # Automatically merge security updates when possible to reduce manual intervention
-    auto-merge: true
+    commit-message:
+      # Prefix all commit messages with "npm: "
+      prefix: "npm"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 1
+    labels:
+      - "dependencies"
+    commit-message:
+      # Prefix all commit messages with "[gh-actions] "
+      prefix: "[gh-actions]"
